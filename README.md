@@ -1,7 +1,9 @@
 # **Adaptive Payment connector Routing Using Non-Stationary Multi-Armed Bandits**
 
 ## **Problem Statement**
-In a payment system, we need to dynamically choose the best **connector** (e.g., Stripe, PayPal, Adyen, RazorPay, PayU) to maximize **successful transactions**. Each connector has a **success rate (SR)** that changes over time due to factors like:
+
+In a payment system, we need to dynamically choose the best **payment connector** (e.g., Stripe, PayPal, Adyen, RazorPay, PayU) to maximize **successful transactions**. Each connector has a **success rate (SR)** that changes over time due to factors like:
+
 - Network performance fluctuations
 - connector downtime
 - Fraud detection policies
