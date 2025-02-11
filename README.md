@@ -1,11 +1,11 @@
-# **Adaptive Payment connector Routing Using Non-Stationary Multi-Armed Bandits**
+# **Adaptive Payment Connector Routing Using Non-Stationary Multi-Armed Bandits**
 
 ## **Problem Statement**
 
 In a payment system, we need to dynamically choose the best **payment connector** (e.g., Stripe, PayPal, Adyen, RazorPay, PayU) to maximize **successful transactions**. Each connector has a **success rate (SR)** that changes over time due to factors like:
 
 - Network performance fluctuations
-- connector downtime
+- Connector downtime
 - Fraud detection policies
 - Seasonal traffic variations
 
@@ -43,7 +43,7 @@ After each transaction:
   $$
 - \( \gamma \) is a **discount factor** (0 < \( \gamma \) < 1) that reduces the weight of older data.
 
-### **Choosing the Best Payment connector (Thompson Sampling)**
+### **Choosing the Best Payment Connector (Thompson Sampling)**
 1. **Sample a success rate** for each connector:
    $$
    \hat{p}_i \sim \text{Beta}(\alpha_i, \beta_i)
@@ -67,17 +67,17 @@ $$
 ### **UCB Score Calculation**
 The UCB score for each connector is computed as:
 $$
-\text{UCB Score}_i = \text{Success Rate}_i + c \cdot \sqrt{\frac{\ln(\text{Total Attempts})}{\text{connector Attempts}_i}}
+\text{UCB Score}_i = \text{Success Rate}_i + c \cdot \sqrt{\frac{\ln(\text{Total Attempts})}{\text{Connector Attempts}_i}}
 $$
 Where:
 - \( c \) is an **exploration factor**.
 - \( \text{Total Attempts} \) is the total number of transactions across all connectors.
-- \( \text{connector Attempts}_i \) is the number of transactions routed through connector \( i \).
+- \( \text{Connector Attempts}_i \) is the number of transactions routed through connector \( i \).
 
-### **connector Selection**
+### **Connector Selection**
 The connector with the highest UCB score is selected for the next transaction:
 $$
-g^* = \arg\max_{g} \left( \text{Success Rate}_g + c \cdot \sqrt{\frac{\ln(\text{Total Attempts})}{\text{connector Attempts}_g}} \right)
+g^* = \arg\max_{g} \left( \text{Success Rate}_g + c \cdot \sqrt{\frac{\ln(\text{Total Attempts})}{\text{Connector Attempts}_g}} \right)
 $$
 
 ---
@@ -109,11 +109,18 @@ By using **Thompson Sampling with Discount Factor** or **Sliding Window UCB**, w
 
 ---
 
-## How to Run the Code
+## **How to Run the Code**
 
 1. Open a terminal in the project root directory.
 2. Build and run using Cargo:
    - For Thompson Sampling:
-     > cargo run -- thompson
+     ```bash
+     cargo run -- thompson
+     ```
    - For Sliding Window UCB:
-     > cargo run -- ucb
+     ```bash
+     cargo run -- ucb
+     ```
+
+---
+
